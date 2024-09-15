@@ -21,25 +21,28 @@ get_download_url() {
 	local build
 	case "${platform}" in
 	darwin)
-		if [[ "${arch}" == "aarch64" ]]; then
-			build='macos-arm64'
+		if [[ "${arch}" == "x86_64" ]]; then
+			build='darwin_amd64'
 		else
-			build='macos-arm64'
+			build='darwin_arm64'
 		fi
 		;;
 	linux)
-		if [[ "${arch}" == "aarch64" ]]; then
-			build='linux-arm64'
-		elif [[ "${arch}" == "x86_64" ]]; then
-			build='linux64'
+		if [[ "${arch}" == "x86_64" ]]; then
+			build='linux_amd64'
+		elif [[ "${arch}" == "x86" ]]; then
+			build='linux_386'
 		else
-			build='linux32'
+			build='linux_arm64'
 		fi
+		;;
+	*)
+		build='xxx'
 		;;
 	esac
 
-	# https://github.com/zyedidia/micro/releases/download/v2.0.14/micro-2.0.14-linux-arm64.tgz
-	echo -n "$GH_REPO/releases/download/v${version}/${TOOL_NAME}-${version}-${build}.tar.gz"
+	# https://github.com/air-verse/air/releases/download/v1.52.3/air_1.52.3_darwin_amd64.tar.gz
+	echo -n "$GH_REPO/releases/download/v${version}/${TOOL_NAME}_${version}_${build}.tar.gz"
 }
 
 # CUSTOMIZE
