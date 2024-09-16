@@ -15,16 +15,18 @@ extract_release() {
 
 # CUSTOMIZE
 get_download_url() {
+	local tool_name
+	tool_name="$1"
 	local gh_repo
-	gh_repo="$1"
+	gh_repo="$2"
 	local version
-	version="$2"
+	version="$3"
 	local platform
-	platform="$3"
+	platform="$4"
 	local arch
-	arch="$4"
+	arch="$5"
 	local processor
-	processor="$5"
+	processor="$6"
 
 	local build
 	case "${platform}" in
@@ -53,8 +55,8 @@ get_download_url() {
 		;;
 	esac
 
-	# https://github.com/zyedidia/micro/releases/download/v2.0.14/micro-2.0.14-linux-arm64.tgz
-	echo -n "${gh_repo}/releases/download/v${version}/${TOOL_NAME}_${version}_${build}.tar.gz"
+	# https://github.com/air-verse/air/releases/download/v1.52.3/air_1.52.3_darwin_amd64
+	echo -n "${gh_repo}/releases/download/v${version}/${tool_name}_${version}_${build}.tar.gz"
 }
 
 # CUSTOMIZE
