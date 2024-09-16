@@ -10,7 +10,6 @@ extract_release() {
 	local extract_dir
 	extract_dir="$2"
 
-	# tar -xzf "$release_file" -C "$extract_dir" --strip-components=1
 	tar -xzf "$release_file" -C "$extract_dir"
 }
 
